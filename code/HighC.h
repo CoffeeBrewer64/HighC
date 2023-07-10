@@ -115,4 +115,16 @@ int HC_CreateFolder(const char* path)
     }
 }
 
+// HC_FastInverseSquareRoot
+
+float HC_FastInverseSquareRoot(float x)
+{
+    float xhalf = 0.5f * x;
+    int i = *(int*)&x;          // treat float bits as an integer
+    i = 0x5f3759df - (i >> 1);  // initial guess using magic number
+    x = *(float*)&i;            // treat integer bits as a float
+    x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
+    return x;
+}
+
 #endif // HIGHC_H_INCLUDED
