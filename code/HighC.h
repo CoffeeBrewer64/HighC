@@ -21,6 +21,18 @@ THE LEGAL OWNER OF THE CODE
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef GL_INCLUDES
+
+#include <GL/gl.h>
+#include <GL/glaux.h>
+#include <GL/glcorearb.h>
+#include <GL/glext.h>
+#include <GL/glu.h>
+#include <GL/glxext.h>
+#include <GL/wglext.h>
+
+#endif // GL_INCLUDES
+
 #ifdef _WIN32
 #include <direct.h>
 #define CREATE_DIR(path) _mkdir(path)
@@ -28,6 +40,20 @@ THE LEGAL OWNER OF THE CODE
 #include <sys/stat.h>
 #define CREATE_DIR(path) mkdir(path, 0777)
 #endif
+
+// TYPES
+
+// HL_DateTime
+
+typedef struct HL_DateTime {
+    unsigned short year;
+    unsigned short month;
+    unsigned short day;
+    unsigned short hour;
+    unsigned short minute;
+    unsigned short second;
+    unsigned int microsecond;
+} HL_DateTime;
 
 // HC_OpenWebsite (and variations)
 
