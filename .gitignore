@@ -1,0 +1,6 @@
+
+*.exe
+*.cbp
+*.depend
+*.o
+*.gch
