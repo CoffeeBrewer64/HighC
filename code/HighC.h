@@ -127,4 +127,21 @@ float HC_FastInverseSquareRoot(float x)
     return x;
 }
 
+// HC_AccurateFastInverseSquareRoot
+
+float HC_AccurateFastInverseSquareRoot(float x, int iterations)
+{
+    float xhalf = 0.5f * x;
+    int i = *(int*)&x;          // treat float bits as an integer
+    i = 0x5f3759df - (i >> 1);  // initial guess using magic number
+    x = *(float*)&i;            // treat integer bits as a float
+
+    // Perform additional Newton-Raphson iterations
+    for (int j = 0; j < iterations; j++) {
+        x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
+    }
+
+    return x;
+}
+
 #endif // HIGHC_H_INCLUDED
