@@ -13,8 +13,6 @@ THE LEGAL OWNER OF THE CODE
 
 // HighC is a single header C library with the aim of simplifying many tasks, like creating files, creating folders, encrypting data etc.
 // Functions have simple versions and complex versions.
-// Simple versions' prefix: HC_
-// Complex versions' prefix: HC_C_
 
 /*** malloc() and free() should NOT be used unless there is no alternative ***/
 
