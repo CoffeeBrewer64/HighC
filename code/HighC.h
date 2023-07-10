@@ -120,9 +120,11 @@ int HC_CreateFolder(const char* path)
 float HC_FastInverseSquareRoot(float x)
 {
     float xhalf = 0.5f * x;
-    int i = *(int*)&x;          // treat float bits as an integer
-    i = 0x5f3759df - (i >> 1);  // initial guess using magic number
-    x = *(float*)&i;            // treat integer bits as a float
+    int i;
+    memcpy(&i, &x, sizeof(int));   // copy float bits to an integer
+
+    i = 0x5f3759df - (i >> 1);     // initial guess using magic number
+    memcpy(&x, &i, sizeof(float)); // copy integer bits to a float
     x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
     return x;
 }
@@ -132,16 +134,54 @@ float HC_FastInverseSquareRoot(float x)
 float HC_AccurateFastInverseSquareRoot(float x, int iterations)
 {
     float xhalf = 0.5f * x;
-    int i = *(int*)&x;          // treat float bits as an integer
-    i = 0x5f3759df - (i >> 1);  // initial guess using magic number
-    x = *(float*)&i;            // treat integer bits as a float
+    int i;
+    memcpy(&i, &x, sizeof(int));   // copy float bits to an integer
+
+    i = 0x5f3759df - (i >> 1);     // initial guess using magic number
+    memcpy(&x, &i, sizeof(float)); // copy integer bits to a float
 
     // Perform additional Newton-Raphson iterations
-    for (int j = 0; j < iterations; j++) {
+    for (int j = 0; j < iterations; j++)
+    {
         x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
     }
 
     return x;
+}
+
+// HC_ReadFileContents_RB
+
+// RB = Read binary
+
+char* HC_ReadFileContents_RB(const char* filename)
+{
+    const int max = 1000000;
+    static char buffer[max]; // Static buffer for file contents
+
+    FILE* file = fopen(filename, "rb");
+    if (file != NULL)
+    {
+        // Seek to the end of the file to determine its size
+        fseek(file, 0, SEEK_END);
+        long file_size = ftell(file);
+        fseek(file, 0, SEEK_SET);
+
+        if (file_size < max)
+        {
+            // Read the file contents into the buffer
+            fread(buffer, sizeof(char), file_size, file);
+            buffer[file_size] = '\0'; // Null-terminate the string
+        }
+        else
+        {
+            fclose(file);
+            return NULL; // File size exceeds buffer capacity
+        }
+
+        fclose(file);
+        return buffer;
+    }
+    return NULL; // Failed to open the file
 }
 
 #endif // HIGHC_H_INCLUDED
