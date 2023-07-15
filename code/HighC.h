@@ -8,6 +8,8 @@ THE LEGAL OWNER OF THE CODE
 
 ***/
 
+/// HC_BROKEN patch appplied
+
 #ifndef HIGHC_H_INCLUDED
 #define HIGHC_H_INCLUDED
 
@@ -175,6 +177,7 @@ float HC_AccurateFastInverseSquareRoot(float x, int iterations)
     return x;
 }
 
+#ifdef HC_BROKEN
 // HC_ReadFileContents_RB
 
 // RB = Read binary
@@ -209,6 +212,7 @@ char* HC_ReadFileContents_RB(const char* filename)
     }
     return NULL; // Failed to open the file
 }
+#endif // HC_BROKEN
 
 int HC_Check_FileExists(const char* path)
 {
