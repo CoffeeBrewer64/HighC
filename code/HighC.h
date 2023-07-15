@@ -210,4 +210,27 @@ char* HC_ReadFileContents_RB(const char* filename)
     return NULL; // Failed to open the file
 }
 
+int HC_Check_FileExists(const char* path)
+{
+    FILE* file = fopen(path, "r");
+    if (file != NULL)
+    {
+        // File exists
+        fclose(file);
+        return 1;
+    }
+    if (file == NULL)
+    {
+        // File does not exist
+        fclose(file);
+        return 0;
+    }
+    else
+    {
+        // Something else happened
+        fclose(file);
+        return -1;
+    }
+}
+
 #endif // HIGHC_H_INCLUDED
