@@ -256,4 +256,47 @@ char* HC_MergeStrings(char* str1, char* str2)
     return result;
 }
 
+int HC_MoveFile(const char* sourcePath, const char* destinationPath)
+{
+    FILE *sourceFile, *destinationFile;
+    char buffer[4096]; // Buffer to hold data while copying
+
+    // Open the source file for reading in binary mode
+    sourceFile = fopen(sourcePath, "rb");
+    if (sourceFile == NULL)
+    {
+        perror("Error opening source file");
+        return 1;
+    }
+
+    // Open the destination file for writing in binary mode
+    destinationFile = fopen(destinationPath, "wb");
+    if (destinationFile == NULL)
+    {
+        perror("Error opening destination file");
+        fclose(sourceFile);
+        return 1;
+    }
+
+    // Copy data from source to destination
+    size_t bytesRead;
+    while ((bytesRead = fread(buffer, 1, sizeof(buffer), sourceFile)) > 0)
+    {
+        fwrite(buffer, 1, bytesRead, destinationFile);
+    }
+
+    // Close the files
+    fclose(sourceFile);
+    fclose(destinationFile);
+
+    // Remove the original file
+    if (remove(sourcePath) != 0)
+    {
+        perror("Error deleting the original file");
+        return 1;
+    }
+
+    return 0;
+}
+
 #endif // HIGHC_H_INCLUDED
