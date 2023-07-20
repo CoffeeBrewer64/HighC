@@ -47,7 +47,8 @@ THE LEGAL OWNER OF THE CODE
 
 // HL_DateTime
 
-typedef struct HL_DateTime {
+typedef struct HL_DateTime
+{
     unsigned short year;
     unsigned short month;
     unsigned short day;
@@ -245,7 +246,6 @@ char* HC_MergeStrings(char* str1, char* str2)
     char* result = (char*)malloc(len1 + len2 + 1);
     if (result == NULL)
     {
-        check_segfault(result);
         printf("Error: memory allocation failed for merge_strings()\n");
         return NULL;
     }
