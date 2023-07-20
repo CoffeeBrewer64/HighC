@@ -237,4 +237,23 @@ int HC_Check_FileExists(const char* path)
     }
 }
 
+char* HC_MergeStrings(char* str1, char* str2)
+{
+    size_t len1 = strlen(str1);
+    size_t len2 = strlen(str2);
+
+    char* result = (char*)malloc(len1 + len2 + 1);
+    if (result == NULL)
+    {
+        check_segfault(result);
+        printf("Error: memory allocation failed for merge_strings()\n");
+        return NULL;
+    }
+
+    memcpy(result, str1, len1);
+    memcpy(result + len1, str2, len2 + 1); // Add the null terminator
+
+    return result;
+}
+
 #endif // HIGHC_H_INCLUDED
