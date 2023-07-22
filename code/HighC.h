@@ -315,4 +315,36 @@ float HC_Maths_AccurateFastInverseSquareRoot(float x, int iterations)
     return x;
 }
 
+// HC_Maths_SquareRoot
+double HC_Maths_SquareRoot(double num)
+{
+    double x = num;
+    double y = 1.0;
+    double epsilon = 0.000001; // Desired precision
+
+    while (x - y > epsilon)
+    {
+        x = (x + y) / 2;
+        y = num / x;
+    }
+
+    return x;
+}
+
+// HC_Maths_SquareRoot_Precise
+double HC_Maths_SquareRoot_Precise(double num)
+{
+    double x = num;
+    double y = 1.0;
+    double epsilon = 0.0000000000000001; // Desired precision
+
+    while (x - y > epsilon)
+    {
+        x = (x + y) / 2;
+        y = num / x;
+    }
+
+    return x;
+}
+
 #endif // HIGHC_H_INCLUDED
