@@ -191,43 +191,6 @@ int HC_CreateFolder(const char* path)
     }
 }
 
-#ifdef HC_BROKEN
-// HC_ReadFileContents_RB
-
-// RB = Read binary
-
-char* HC_ReadFileContents_RB(const char* filename)
-{
-    const int max = 1000000;
-    static char buffer[max]; // Static buffer for file contents
-
-    FILE* file = fopen(filename, "rb");
-    if (file != NULL)
-    {
-        // Seek to the end of the file to determine its size
-        fseek(file, 0, SEEK_END);
-        long file_size = ftell(file);
-        fseek(file, 0, SEEK_SET);
-
-        if (file_size < max)
-        {
-            // Read the file contents into the buffer
-            fread(buffer, sizeof(char), file_size, file);
-            buffer[file_size] = '\0'; // Null-terminate the string
-        }
-        else
-        {
-            fclose(file);
-            return NULL; // File size exceeds buffer capacity
-        }
-
-        fclose(file);
-        return buffer;
-    }
-    return NULL; // Failed to open the file
-}
-#endif // HC_BROKEN
-
 int HC_Check_FileExists(const char* path)
 {
     FILE* file = fopen(path, "r");
@@ -407,5 +370,58 @@ double HC_Maths_Triangle_Hypotenuse_Precise(double a, double b)
     double c = HC_Maths_SquareRoot_Precise(a * a + b * b);
     return c;
 }
+
+/*
+
+
+$$$$$$$\   $$$$$$\ $$$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\
+$$  __$$\ $$  __$$\\__$$  __|$$  __$$\ $$ |  $$ |$$  _____|$$  __$$\
+$$ |  $$ |$$ /  $$ |  $$ |   $$ /  \__|$$ |  $$ |$$ |      $$ /  \__|
+$$$$$$$  |$$$$$$$$ |  $$ |   $$ |      $$$$$$$$ |$$$$$\    \$$$$$$\
+$$  ____/ $$  __$$ |  $$ |   $$ |      $$  __$$ |$$  __|    \____$$\
+$$ |      $$ |  $$ |  $$ |   $$ |  $$\ $$ |  $$ |$$ |      $$\   $$ |
+$$ |      $$ |  $$ |  $$ |   \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |
+\__|      \__|  \__|  \__|    \______/ \__|  \__|\________| \______/
+
+PATCHES
+
+*/
+
+#ifdef HC_PATCH_BROKEN
+// HC_ReadFileContents_RB
+
+// RB = Read binary
+
+char* HC_ReadFileContents_RB(const char* filename)
+{
+    const int max = 1000000;
+    static char buffer[max]; // Static buffer for file contents
+
+    FILE* file = fopen(filename, "rb");
+    if (file != NULL)
+    {
+        // Seek to the end of the file to determine its size
+        fseek(file, 0, SEEK_END);
+        long file_size = ftell(file);
+        fseek(file, 0, SEEK_SET);
+
+        if (file_size < max)
+        {
+            // Read the file contents into the buffer
+            fread(buffer, sizeof(char), file_size, file);
+            buffer[file_size] = '\0'; // Null-terminate the string
+        }
+        else
+        {
+            fclose(file);
+            return NULL; // File size exceeds buffer capacity
+        }
+
+        fclose(file);
+        return buffer;
+    }
+    return NULL; // Failed to open the file
+}
+#endif // HC_PATCH_BROKEN
 
 #endif // HIGHC_H_INCLUDED
