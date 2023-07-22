@@ -30,6 +30,7 @@ The only included libraries are stdio.h and stdlib.h. direct.h will be used on W
 === FLAGS ===
 
 You can define HC_FLAGS_GL_INCLUDES to include the GL/ folder of headers.
+You can define HC_FLAGS_INCLUDE_STDBOOL to include the stdbool.h header, allowing you to use boolean values with bool and true and false.
 
 === FEATURES ===
 
@@ -76,6 +77,10 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #include <GL/wglext.h>
 
 #endif // HC_FLAGS_GL_INCLUDES
+
+#ifdef HC_FLAGS_INCLUDE_STDBOOL
+#include <stdbool.h>
+#endif // HC_FLAGS_INCLUDE_STDBOOL
 
 #ifdef _WIN32
     // Windows
