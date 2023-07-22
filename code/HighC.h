@@ -347,4 +347,11 @@ double HC_Maths_SquareRoot_Precise(double num)
     return x;
 }
 
+// HC_Maths_Triangle_Hypotenuse
+double HC_Maths_Triangle_Hypotenuse(double a, double b)
+{
+    double c = HC_Maths_SquareRoot(a * a + b * b);
+    return c;
+}
+
 #endif // HIGHC_H_INCLUDED
