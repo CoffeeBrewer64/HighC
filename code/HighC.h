@@ -29,7 +29,7 @@ The only included libraries are stdio.h and stdlib.h. direct.h will be used on W
 
 === FLAGS ===
 
-You can define GL_INCLUDES to include the GL/ folder of headers.
+You can define HC_FLAGS_GL_INCLUDES to include the GL/ folder of headers.
 
 === FEATURES ===
 
@@ -65,7 +65,7 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef GL_INCLUDES
+#ifdef HC_FLAGS_GL_INCLUDES
 
 #include <GL/gl.h>
 #include <GL/glaux.h>
@@ -75,7 +75,7 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #include <GL/glxext.h>
 #include <GL/wglext.h>
 
-#endif // GL_INCLUDES
+#endif // HC_FLAGS_GL_INCLUDES
 
 #ifdef _WIN32
     // Windows
