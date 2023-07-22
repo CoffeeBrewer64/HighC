@@ -44,6 +44,12 @@ You can define GL_INCLUDES to include the GL/ folder of headers.
 - Fast inverse square root
 - Hypotenuse of a triangle
 
+=== PATCHES ===
+
+Some things in HighC still do not work. You can apply certain patches to either access these or make act in ways they are not meant to act.
+
+Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
+
 */
 
 /// HC_BROKEN patch appplied
