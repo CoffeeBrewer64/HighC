@@ -31,6 +31,7 @@ The only included libraries are stdio.h and stdlib.h. direct.h will be used on W
 
 You can define HC_FLAGS_GL_INCLUDES to include the GL/ folder of headers.
 You can define HC_FLAGS_INCLUDE_STDBOOL to include the stdbool.h header, allowing you to use boolean values with bool and true and false.
+You can define HC_FLAGS_SDL2_INCLUDES to get access to all SDL2 headers, provided they are as SDL2/SDL_ etc.
 
 === FEATURES ===
 
@@ -58,7 +59,6 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #ifndef HIGHC_H_INCLUDED
 #define HIGHC_H_INCLUDED
 
-
 /*** malloc() and free() should NOT be used unless there is no alternative ***/
 
 // INCLUDES
@@ -81,6 +81,73 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #ifdef HC_FLAGS_INCLUDE_STDBOOL
 #include <stdbool.h>
 #endif // HC_FLAGS_INCLUDE_STDBOOL
+
+#ifdef HC_FLAGS_SDL2_INCLUDES
+#include <SDL2/begin_code.h>
+#include <SDL2/close_code.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_assert.h>
+#include <SDL2/SDL_atomic.h>
+#include <SDL2/SDL_audio.h>
+#include <SDL2/SDL_bits.h>
+#include <SDL2/SDL_blendmode.h>
+#include <SDL2/SDL_clipboard.h>
+#include <SDL2/SDL_egl.h>
+#include <SDL2/SDL_endian.h>
+#include <SDL2/SDL_error.h>
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_filesystem.h>
+#include <SDL2/SDL_gamecontroller.h>
+#include <SDL2/SDL_gesture.h>
+#include <SDL2/SDL_guid.h>
+#include <SDL2/SDL_haptic.h>
+#include <SDL2/SDL_hidapi.h>
+#include <SDL2/SDL_hints.h>
+#include <SDL2/SDL_joystick.h>
+#include <SDL2/SDL_keyboard.h>
+#include <SDL2/SDL_keycode.h>
+#include <SDL2/SDL_loadso.h>
+#include <SDL2/SDL_locale.h>
+#include <SDL2/SDL_log.h>
+#include <SDL2/SDL_main.h>
+#include <SDL2/SDL_messagebox.h>
+#include <SDL2/SDL_metal.h>
+#include <SDL2/SDL_misc.h>
+#include <SDL2/SDL_mouse.h>
+#include <SDL2/SDL_metal.h>
+#include <SDL2/SDL_mutex.h>
+#include <SDL2/SDL_name.h>
+
+// SDL2 opengl shit
+
+#include <SDL2/SDL_pixels.h>
+#include <SDL2/SDL_platform.h>
+#include <SDL2/SDL_power.h>
+#include <SDL2/SDL_quit.h>
+#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_revision.h>
+#include <SDL2/SDL_rwops.h>
+#include <SDL2/SDL_scancode.h>
+#include <SDL2/SDL_sensor.h>
+#include <SDL2/SDL_shape.h>
+#include <SDL2/SDL_stdinc.h>
+#include <SDL2/SDL_surface.h>
+#include <SDL2/SDL_system.h>
+#include <SDL2/SDL_syswm.h>
+
+// SDL2 tests
+
+#include <SDL2/SDL_thread.h>
+#include <SDL2/SDL_timer.h>
+#include <SDL2/SDL_touch.h>
+#include <SDL2/SDL_types.h>
+#include <SDL2/SDL_version.h>
+#include <SDL2/SDL_video.h>
+
+// SDL2 vulkan
+
+#endif // HC_FLAGS_SDL2_INCLUDES
 
 #ifdef _WIN32
     // Windows
