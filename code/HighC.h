@@ -144,40 +144,6 @@ int HC_CreateFolder(const char* path)
     }
 }
 
-// HC_FastInverseSquareRoot
-
-float HC_FastInverseSquareRoot(float x)
-{
-    float xhalf = 0.5f * x;
-    int i;
-    memcpy(&i, &x, sizeof(int));   // copy float bits to an integer
-
-    i = 0x5f3759df - (i >> 1);     // initial guess using magic number
-    memcpy(&x, &i, sizeof(float)); // copy integer bits to a float
-    x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
-    return x;
-}
-
-// HC_AccurateFastInverseSquareRoot
-
-float HC_AccurateFastInverseSquareRoot(float x, int iterations)
-{
-    float xhalf = 0.5f * x;
-    int i;
-    memcpy(&i, &x, sizeof(int));   // copy float bits to an integer
-
-    i = 0x5f3759df - (i >> 1);     // initial guess using magic number
-    memcpy(&x, &i, sizeof(float)); // copy integer bits to a float
-
-    // Perform additional Newton-Raphson iterations
-    for (int j = 0; j < iterations; j++)
-    {
-        x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
-    }
-
-    return x;
-}
-
 #ifdef HC_BROKEN
 // HC_ReadFileContents_RB
 
@@ -297,6 +263,56 @@ int HC_MoveFile(const char* sourcePath, const char* destinationPath)
     }
 
     return 0;
+}
+
+/*
+
+$$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
+$$$\    $$$ |$$  __$$\\__$$  __|$$ |  $$ |$$  __$$\
+$$$$\  $$$$ |$$ /  $$ |  $$ |   $$ |  $$ |$$ /  \__|
+$$\$$\$$ $$ |$$$$$$$$ |  $$ |   $$$$$$$$ |\$$$$$$\
+$$ \$$$  $$ |$$  __$$ |  $$ |   $$  __$$ | \____$$\
+$$ |\$  /$$ |$$ |  $$ |  $$ |   $$ |  $$ |$$\   $$ |
+$$ | \_/ $$ |$$ |  $$ |  $$ |   $$ |  $$ |\$$$$$$  |
+\__|     \__|\__|  \__|  \__|   \__|  \__| \______/
+
+
+MATHS FUNCTIONS
+
+*/
+
+// HC_Maths_FastInverseSquareRoot
+
+float HC_Maths_FastInverseSquareRoot(float x)
+{
+    float xhalf = 0.5f * x;
+    int i;
+    memcpy(&i, &x, sizeof(int));   // copy float bits to an integer
+
+    i = 0x5f3759df - (i >> 1);     // initial guess using magic number
+    memcpy(&x, &i, sizeof(float)); // copy integer bits to a float
+    x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
+    return x;
+}
+
+// HC_Maths_AccurateFastInverseSquareRoot
+
+float HC_Maths_AccurateFastInverseSquareRoot(float x, int iterations)
+{
+    float xhalf = 0.5f * x;
+    int i;
+    memcpy(&i, &x, sizeof(int));   // copy float bits to an integer
+
+    i = 0x5f3759df - (i >> 1);     // initial guess using magic number
+    memcpy(&x, &i, sizeof(float)); // copy integer bits to a float
+
+    // Perform additional Newton-Raphson iterations
+    for (int j = 0; j < iterations; j++)
+    {
+        x = x * (1.5f - xhalf * x * x); // Newton-Raphson iteration
+    }
+
+    return x;
 }
 
 #endif // HIGHC_H_INCLUDED
