@@ -36,6 +36,17 @@ THE LEGAL OWNER OF THE CODE
 #endif // GL_INCLUDES
 
 #ifdef _WIN32
+    // Windows
+    const char* HC_OperatingSystem = "Windows";
+#elif __APPLE__
+    // macOS
+    const char* HC_OperatingSystem = "MacOS";
+#else
+    // Linux
+    const char* HC_OperatingSystem = "Linux";
+#endif
+
+#ifdef _WIN32
 #include <direct.h>
 #define CREATE_DIR(path) _mkdir(path)
 #else
