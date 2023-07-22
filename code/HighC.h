@@ -8,13 +8,49 @@ THE LEGAL OWNER OF THE CODE
 
 ***/
 
+/*
+
+$$$$$$$\   $$$$$$\   $$$$$$\  $$\   $$\ $$\      $$\ $$$$$$$$\ $$\   $$\ $$$$$$$$\  $$$$$$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$\   $$\
+$$  __$$\ $$  __$$\ $$  __$$\ $$ |  $$ |$$$\    $$$ |$$  _____|$$$\  $$ |\__$$  __|$$  __$$\\__$$  __|\_$$  _|$$  __$$\ $$$\  $$ |
+$$ |  $$ |$$ /  $$ |$$ /  \__|$$ |  $$ |$$$$\  $$$$ |$$ |      $$$$\ $$ |   $$ |   $$ /  $$ |  $$ |     $$ |  $$ /  $$ |$$$$\ $$ |
+$$ |  $$ |$$ |  $$ |$$ |      $$ |  $$ |$$\$$\$$ $$ |$$$$$\    $$ $$\$$ |   $$ |   $$$$$$$$ |  $$ |     $$ |  $$ |  $$ |$$ $$\$$ |
+$$ |  $$ |$$ |  $$ |$$ |      $$ |  $$ |$$ \$$$  $$ |$$  __|   $$ \$$$$ |   $$ |   $$  __$$ |  $$ |     $$ |  $$ |  $$ |$$ \$$$$ |
+$$ |  $$ |$$ |  $$ |$$ |  $$\ $$ |  $$ |$$ |\$  /$$ |$$ |      $$ |\$$$ |   $$ |   $$ |  $$ |  $$ |     $$ |  $$ |  $$ |$$ |\$$$ |
+$$$$$$$  | $$$$$$  |\$$$$$$  |\$$$$$$  |$$ | \_/ $$ |$$$$$$$$\ $$ | \$$ |   $$ |   $$ |  $$ |  $$ |   $$$$$$\  $$$$$$  |$$ | \$$ |
+\_______/  \______/  \______/  \______/ \__|     \__|\________|\__|  \__|   \__|   \__|  \__|  \__|   \______| \______/ \__|  \__|
+
+
+DOCUMENTATION
+
+This is HighC, a single C header file with the goal of making C a high level programming language through abstraction.
+
+=== INCLUDED LIBRARIES ===
+The only included libraries are stdio.h and stdlib.h. direct.h will be used on Windows and sys/stat.h on Linux and MacOS.
+
+=== FLAGS ===
+
+You can define GL_INCLUDES to include the GL/ folder of headers.
+
+=== FEATURES ===
+
+- Open websites
+- Create files
+- Create folders
+- Check if a file exists
+- Move a file
+- Merge strings
+- Convert int to char
+- Square root
+- Fast inverse square root
+- Hypotenuse of a triangle
+
+*/
+
 /// HC_BROKEN patch appplied
 
 #ifndef HIGHC_H_INCLUDED
 #define HIGHC_H_INCLUDED
 
-// HighC is a single header C library with the aim of simplifying many tasks, like creating files, creating folders, encrypting data etc.
-// Functions have simple versions and complex versions.
 
 /*** malloc() and free() should NOT be used unless there is no alternative ***/
 
