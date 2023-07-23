@@ -551,6 +551,20 @@ char* HC_ReadFile_Line(const char* filename, int line_number)
     return NULL;
 }
 
+// HC_Time_IsLeapYear
+
+int HC_Time_IsLeapYear(unsigned short year)
+{
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 /*
 
  $$$$$$\   $$$$$$\  $$\   $$\ $$\    $$\ $$$$$$$$\ $$$$$$$\ $$$$$$$$\
