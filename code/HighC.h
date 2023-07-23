@@ -25,7 +25,9 @@ DOCUMENTATION
 This is HighC, a single C header file with the goal of making C a high level programming language through abstraction.
 
 === INCLUDED LIBRARIES ===
-The only included libraries are stdio.h and stdlib.h. direct.h will be used on Windows and sys/stat.h on Linux and MacOS.
+The only included libraries are stdio.h and stdlib.h. Automatically, direct.h will be used on Windows and sys/stat.h on Linux and MacOS.
+
+Optionally, you can define HC_FLAGS_INCLUDE_STDINTGCC to include the stdint-gcc.h header.
 
 === FLAGS ===
 
@@ -92,6 +94,10 @@ INCLUDES
 
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifdef HC_FLAGS_INCLUDE_STDINTGCC
+#include <stdint-gcc.h>
+#endif // HC_FLAGS_INCLUDE_STDINTGCC
 
 /*
 
