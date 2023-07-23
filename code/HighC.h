@@ -627,6 +627,14 @@ double HC_Convert_MetresToFeet(double meters)
     return meters * 3.28084;
 }
 
+// HC_Convert_FeetToMetres
+
+double HC_Convert_FeetToMetres(double feet)
+{
+    // 1 foot is approximately equal to 0.3048 meters.
+    return feet * 0.3048;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
