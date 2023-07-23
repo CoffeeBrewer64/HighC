@@ -581,6 +581,14 @@ unsigned int HC_Convert_BitsToBytes(unsigned int bits)
     return bits / 8;
 }
 
+// HC_Convert_BytesToBits
+
+unsigned int HC_Convert_BytesToBits(unsigned int bytes)
+{
+    // Calculate the equivalent number of bits.
+    return bytes * 8;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
