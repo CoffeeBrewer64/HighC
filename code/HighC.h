@@ -651,6 +651,14 @@ double HC_Convert_KilogramsToStones(double kilograms)
     return kilograms * 0.157473;
 }
 
+// HC_Convert_MilesToKilometres
+
+double HC_Convert_MilesToKilometres(double miles)
+{
+    // 1 mile is equal to 1.60934 kilometres.
+    return miles * 1.60934;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
