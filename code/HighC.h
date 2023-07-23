@@ -551,6 +551,20 @@ char* HC_ReadFile_Line(const char* filename, int line_number)
     return NULL;
 }
 
+// HC_Convert_BitsToBytes
+
+unsigned int HC_Convert_BitsToBytes(unsigned int bits)
+{
+    // Check if the number of bits is not a multiple of 8.
+    if (bits % 8 != 0)
+    {
+        printf("Warning: The number of bits is not a multiple of 8. Result may not be an integer.\n");
+    }
+
+    // Calculate the equivalent number of bytes.
+    return bits / 8;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
