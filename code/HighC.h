@@ -635,6 +635,14 @@ double HC_Convert_FeetToMetres(double feet)
     return feet * 0.3048;
 }
 
+// HC_Convert_StonesToKilograms
+
+double HC_Convert_StonesToKilograms(double stones)
+{
+    // 1 stone is equal to 6.35029 kilograms.
+    return stones * 6.35029;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
