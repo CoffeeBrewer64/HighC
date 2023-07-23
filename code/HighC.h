@@ -270,6 +270,8 @@ int HC_CreateFolder(const char* path)
     }
 }
 
+// HC_Check_FileExists
+
 int HC_Check_FileExists(const char* path)
 {
     FILE* file = fopen(path, "r");
@@ -293,6 +295,8 @@ int HC_Check_FileExists(const char* path)
     }
 }
 
+// HC_MergeStrings
+
 char* HC_MergeStrings(char* str1, char* str2)
 {
     size_t len1 = strlen(str1);
@@ -310,6 +314,8 @@ char* HC_MergeStrings(char* str1, char* str2)
 
     return result;
 }
+
+// HC_MoveFile
 
 int HC_MoveFile(const char* sourcePath, const char* destinationPath)
 {
@@ -353,6 +359,8 @@ int HC_MoveFile(const char* sourcePath, const char* destinationPath)
 
     return 0;
 }
+
+// HC_CopyFile
 
 void HC_CopyFile(const char* sourcePath, const char* destinationPath)
 {
@@ -398,6 +406,8 @@ void HC_CopyFile(const char* sourcePath, const char* destinationPath)
     fclose(sourceFile);
     fclose(destinationFile);
 }
+
+// HC_ReadFile_Line
 
 char* HC_ReadFile_Line(const char* filename, int line_number)
 {
@@ -490,6 +500,7 @@ float HC_Maths_AccurateFastInverseSquareRoot(float x, int iterations)
 }
 
 // HC_Maths_SquareRoot
+
 double HC_Maths_SquareRoot(double num)
 {
     double x = num;
@@ -506,6 +517,7 @@ double HC_Maths_SquareRoot(double num)
 }
 
 // HC_Maths_SquareRoot_Precise
+
 double HC_Maths_SquareRoot_Precise(double num)
 {
     double x = num;
@@ -522,6 +534,7 @@ double HC_Maths_SquareRoot_Precise(double num)
 }
 
 // HC_Maths_Triangle_Hypotenuse
+
 double HC_Maths_Triangle_Hypotenuse(double a, double b)
 {
     double c = HC_Maths_SquareRoot(a * a + b * b);
@@ -529,6 +542,7 @@ double HC_Maths_Triangle_Hypotenuse(double a, double b)
 }
 
 // HC_Maths_Triangle_Hypotenuse_Precise
+
 double HC_Maths_Triangle_Hypotenuse_Precise(double a, double b)
 {
     double c = HC_Maths_SquareRoot_Precise(a * a + b * b);
@@ -552,9 +566,8 @@ PATCHES
 */
 
 #ifdef HC_PATCH_BROKEN
-// HC_ReadFileContents_RB
 
-// RB = Read binary
+// HC_ReadFileContents_RB
 
 char* HC_ReadFileContents_RB(const char* filename)
 {
