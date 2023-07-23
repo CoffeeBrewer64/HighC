@@ -25,7 +25,7 @@ DOCUMENTATION
 This is HighC, a single C header file with the goal of making C a high level programming language through abstraction.
 
 === INCLUDED LIBRARIES ===
-The only included libraries are stdio.h and stdlib.h. Automatically, direct.h will be used on Windows and sys/stat.h on Linux and MacOS.
+The only included libraries are stdio.h, stdlib.h and time.h. Automatically, direct.h will be used on Windows and sys/stat.h on Linux and MacOS.
 
 Optionally, you can define HC_FLAGS_INCLUDE_STDINTGCC to include the stdint-gcc.h header.
 
@@ -94,6 +94,7 @@ INCLUDES
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #ifdef HC_FLAGS_INCLUDE_STDINTGCC
 #include <stdint-gcc.h>
@@ -566,6 +567,41 @@ $$$$$$$$\ $$$$$$\ $$\      $$\ $$$$$$$$\
 TIME
 
 */
+
+unsigned long long HC_Time_Timer_StartTicks = 0;
+
+// HC_Time_Timer_Start
+
+void HC_Time_Timer_Start()
+{
+    HC_Time_Timer_StartTicks = (unsigned long long)clock();
+}
+
+// HC_Time_Timer_Stop
+
+HC_Types_DateTime HC_Time_Timer_Stop()
+{
+    HC_Types_DateTime elapsed_time;
+    unsigned long long current_ticks = (unsigned long long)clock();
+
+    // Calculate the elapsed time in clock ticks
+    unsigned long long elapsed_ticks = current_ticks - HC_Time_Timer_StartTicks;
+
+    // Convert the clock ticks to seconds and microseconds
+    unsigned long long ticks_per_second = CLOCKS_PER_SEC;
+    elapsed_time.second = (unsigned short)(elapsed_ticks / ticks_per_second);
+    elapsed_time.microsecond = (unsigned int)((elapsed_ticks % ticks_per_second) * (1000000.0 / ticks_per_second));
+    HC_Time_Timer_StartTicks = 0;
+    return elapsed_time;
+}
+
+// HC_Time_Timer_Reset
+
+void HC_Time_Timer_Reset()
+{
+    // Reset the start time to the current clock ticks
+    HC_Time_Timer_StartTicks = (unsigned long long)clock();
+}
 
 // HC_Time_IsLeapYear
 
