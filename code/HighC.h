@@ -266,9 +266,9 @@ TYPES
 
 */
 
-// HL_DateTime
+// HC_Types_DateTime
 
-typedef struct HL_DateTime
+typedef struct HC_Types_DateTime
 {
     unsigned short year;
     unsigned short month;
@@ -277,7 +277,7 @@ typedef struct HL_DateTime
     unsigned short minute;
     unsigned short second;
     unsigned int microsecond;
-} HL_DateTime;
+} HC_Types_DateTime;
 
 // HC_OpenWebsite (and variations)
 
