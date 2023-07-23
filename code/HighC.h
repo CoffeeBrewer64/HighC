@@ -643,6 +643,14 @@ double HC_Convert_StonesToKilograms(double stones)
     return stones * 6.35029;
 }
 
+// HC_Convert_KilogramsToStones
+
+double HC_Convert_KilogramsToStones(double kilograms)
+{
+    // 1 kilogram is equal to 0.157473 stones.
+    return kilograms * 0.157473;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
