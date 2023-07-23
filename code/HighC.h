@@ -50,6 +50,7 @@ The following flags determine which renderer to use for SDL2. Only define one of
 - Move a file
 - Copy a file
 - Merge strings
+- Merge 3 strings
 - Convert int to char
 - Square root
 - Fast inverse square root
@@ -372,6 +373,13 @@ char* HC_MergeStrings(char* str1, char* str2)
     memcpy(result + len1, str2, len2 + 1); // Add the null terminator
 
     return result;
+}
+
+// HC_MergeStrings_Three
+
+char* HC_MergeStrings_Three(char* str1, char* str2, char* str3)
+{
+    return HC_MergeStrings(HC_MergeStrings(str1, str2), str3);
 }
 
 // HC_MoveFile
