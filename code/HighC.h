@@ -40,6 +40,7 @@ You can define HC_FLAGS_SDL2_INCLUDES to get access to all SDL2 headers, provide
 - Create folders
 - Check if a file exists
 - Move a file
+- Copy a file
 - Merge strings
 - Convert int to char
 - Square root
@@ -150,14 +151,14 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #endif // HC_FLAGS_SDL2_INCLUDES
 
 #ifdef _WIN32
-    // Windows
-    const char* HC_OperatingSystem = "Windows";
+// Windows
+const char* HC_OperatingSystem = "Windows";
 #elif __APPLE__
-    // macOS
-    const char* HC_OperatingSystem = "MacOS";
+// macOS
+const char* HC_OperatingSystem = "MacOS";
 #else
-    // Linux
-    const char* HC_OperatingSystem = "Linux";
+// Linux
+const char* HC_OperatingSystem = "Linux";
 #endif
 
 #ifdef _WIN32
@@ -351,6 +352,51 @@ int HC_MoveFile(const char* sourcePath, const char* destinationPath)
     }
 
     return 0;
+}
+
+void HC_CopyFile(const char* sourcePath, const char* destinationPath)
+{
+    FILE* sourceFile;
+    FILE* destinationFile;
+    char buffer[1024];
+    size_t bytesRead;
+
+    // Open the source file for reading
+#ifdef _WIN32
+    sourceFile = fopen(sourcePath, "rb");
+#else
+    sourceFile = fopen(sourcePath, "r");
+#endif
+
+    if (sourceFile == NULL)
+    {
+        perror("Error opening the source file");
+        return;
+    }
+
+    // Open the destination file for writing
+#ifdef _WIN32
+    destinationFile = fopen(destinationPath, "wb");
+#else
+    destinationFile = fopen(destinationPath, "w");
+#endif
+
+    if (destinationFile == NULL)
+    {
+        perror("Error opening the destination file");
+        fclose(sourceFile);
+        return;
+    }
+
+    // Copy the contents from source to destination
+    while ((bytesRead = fread(buffer, 1, sizeof(buffer), sourceFile)) > 0)
+    {
+        fwrite(buffer, 1, bytesRead, destinationFile);
+    }
+
+    // Close the files
+    fclose(sourceFile);
+    fclose(destinationFile);
 }
 
 /*
