@@ -399,6 +399,46 @@ void HC_CopyFile(const char* sourcePath, const char* destinationPath)
     fclose(destinationFile);
 }
 
+char* HC_ReadFile_Line(const char* filename, int line_number)
+{
+    FILE* fp;
+    char buffer[100];
+    int current_line = 0;
+
+    fp = fopen(filename, "r");
+    if (fp == NULL)
+    {
+        perror("Error opening file");
+        return NULL;
+    }
+
+    while (fgets(buffer, sizeof(buffer), fp) != NULL)
+    {
+        current_line++;
+        if (current_line == line_number)
+        {
+            char* line = strdup(buffer);
+            if (line == NULL)
+            {
+                perror("Error allocating memory for line");
+                fclose(fp);
+                return NULL;
+            }
+            fclose(fp);
+            return line;
+        }
+    }
+
+    fclose(fp);
+
+    if (line_number > current_line)
+    {
+        printf("Line %d does not exist in file %s\n", line_number, filename);
+    }
+
+    return NULL;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
