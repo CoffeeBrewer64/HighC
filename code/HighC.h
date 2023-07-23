@@ -589,6 +589,14 @@ unsigned int HC_Convert_BytesToBits(unsigned int bytes)
     return bytes * 8;
 }
 
+// HC_Convert_MetresToFeet
+
+double HC_Convert_MetresToFeet(double meters)
+{
+    // 1 meter is approximately equal to 3.28084 feet.
+    return meters * 3.28084;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
