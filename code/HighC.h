@@ -659,6 +659,14 @@ double HC_Convert_MilesToKilometres(double miles)
     return miles * 1.60934;
 }
 
+// HC_Convert_KilometresToMiles
+
+double HC_Convert_KilometresToMiles(double kilometers)
+{
+    // 1 kilometres is equal to 0.621371 miles.
+    return kilometers * 0.621371;
+}
+
 /*
 
 $$\      $$\  $$$$$$\ $$$$$$$$\ $$\   $$\  $$$$$$\
