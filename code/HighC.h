@@ -33,16 +33,17 @@ You can define HC_FLAGS_GL_INCLUDES to include the GL/ folder of headers.
 You can define HC_FLAGS_INCLUDE_STDBOOL to include the stdbool.h header, allowing you to use boolean values with bool and true and false.
 You can define HC_FLAGS_SDL2_INCLUDES to get access to all SDL2 headers, provided they are as SDL2/SDL_ etc.
 
-The following flags determine which renderer to use for SDL2. Only define one of the following
-    You can define HC_FLAGS_SDL2_INCLUDE_VULKAN to include the SDL2/SDL_vulkan.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGL to include the SDL2/SDL_opengl.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES to include the SDL2/SDL_opengles.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2 to include the SDL2/SDL_opengles2.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2 to include the SDL2/SDL_opengles2_gl2.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2EXT to include the SDL2/SDL_opengles2_gl2ext.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2PLATFORM to include the SDL2/SDL_opengles2_gl2platform.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_KHRPLATFORM to include the SDL2/SDL_opengles2_khrplatform.h header
-    You can define HC_FLAGS_SDL2_INCLUDE_OPENGL_GLEXT to include the SDL2/SDL_opengl_glext.h header
+To enable the SDL2 renderer headers, define HC_FLAGS_SDL2_USE_SDL2_RENDERER
+    The following flags determine which renderer to use for SDL2. Only define one of the following
+        You can define HC_FLAGS_SDL2_INCLUDE_VULKAN to include the SDL2/SDL_vulkan.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGL to include the SDL2/SDL_opengl.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES to include the SDL2/SDL_opengles.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2 to include the SDL2/SDL_opengles2.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2 to include the SDL2/SDL_opengles2_gl2.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2EXT to include the SDL2/SDL_opengles2_gl2ext.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2PLATFORM to include the SDL2/SDL_opengles2_gl2platform.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_KHRPLATFORM to include the SDL2/SDL_opengles2_khrplatform.h header
+        You can define HC_FLAGS_SDL2_INCLUDE_OPENGL_GLEXT to include the SDL2/SDL_opengl_glext.h header
 
 === FEATURES ===
 
@@ -187,6 +188,7 @@ FLAGS
 
 #endif // HC_FLAGS_SDL2_INCLUDES
 
+#ifdef HC_FLAGS_SDL2_USE_SDL2_RENDERER
 #ifdef HC_FLAGS_SDL2_INCLUDE_OPENGL
 #include <SDL2/SDL_opengl.h>
 #endif // HC_FLAGS_SDL2_INCLUDE_OPENGL
@@ -222,6 +224,7 @@ FLAGS
 #ifdef HC_FLAGS_SDL2_INCLUDE_VULKAN
 #include <SDL2/SDL_vulkan.h>
 #endif // HC_FLAGS_SDL2_INCLUDE_VULKAN
+#endif // HC_FLAGS_SDL2_USE_SDL2_RENDERER
 
 #ifdef _WIN32
 // Windows
