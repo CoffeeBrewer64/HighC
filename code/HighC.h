@@ -551,6 +551,22 @@ char* HC_ReadFile_Line(const char* filename, int line_number)
     return NULL;
 }
 
+/*
+
+$$$$$$$$\ $$$$$$\ $$\      $$\ $$$$$$$$\
+\__$$  __|\_$$  _|$$$\    $$$ |$$  _____|
+   $$ |     $$ |  $$$$\  $$$$ |$$ |
+   $$ |     $$ |  $$\$$\$$ $$ |$$$$$\
+   $$ |     $$ |  $$ \$$$  $$ |$$  __|
+   $$ |     $$ |  $$ |\$  /$$ |$$ |
+   $$ |   $$$$$$\ $$ | \_/ $$ |$$$$$$$$\
+   \__|   \______|\__|     \__|\________|
+
+
+TIME
+
+*/
+
 // HC_Time_IsLeapYear
 
 int HC_Time_IsLeapYear(unsigned short year)
