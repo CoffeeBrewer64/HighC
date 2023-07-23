@@ -39,6 +39,7 @@ The following flags determine which renderer to use for SDL2. Only define one of
     You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES to include the SDL2/SDL_opengles.h header
     You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2 to include the SDL2/SDL_opengles2.h header
     You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2 to include the SDL2/SDL_opengles2_gl2.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2EXT to include the SDL2/SDL_opengles_gl2ext.h header
 
 === FEATURES ===
 
@@ -187,6 +188,10 @@ FLAGS
 #include <SDL2/SDL_opengles2_gl2.h>
 #endif // HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2
 
+#ifdef HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2EXT
+#include <SDL2/SDL_opengles2_gl2ext.h>
+#endif // HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2EXT
+
 #ifdef HC_FLAGS_SDL2_INCLUDE_VULKAN
 #include <SDL2/SDL_vulkan.h>
 #endif // HC_FLAGS_SDL2_INCLUDE_VULKAN
@@ -210,7 +215,20 @@ const char* HC_OperatingSystem = "Linux";
 #define CREATE_DIR(path) mkdir(path, 0777)
 #endif
 
-// TYPES
+/*
+
+$$$$$$$$\ $$\     $$\ $$$$$$$\  $$$$$$$$\  $$$$$$\
+\__$$  __|\$$\   $$  |$$  __$$\ $$  _____|$$  __$$\
+   $$ |    \$$\ $$  / $$ |  $$ |$$ |      $$ /  \__|
+   $$ |     \$$$$  /  $$$$$$$  |$$$$$\    \$$$$$$\
+   $$ |      \$$  /   $$  ____/ $$  __|    \____$$\
+   $$ |       $$ |    $$ |      $$ |      $$\   $$ |
+   $$ |       $$ |    $$ |      $$$$$$$$\ \$$$$$$  |
+   \__|       \__|    \__|      \________| \______/
+
+TYPES
+
+*/
 
 // HL_DateTime
 
