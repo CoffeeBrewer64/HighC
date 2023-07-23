@@ -42,6 +42,7 @@ The following flags determine which renderer to use for SDL2. Only define one of
     You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2EXT to include the SDL2/SDL_opengles2_gl2ext.h header
     You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2PLATFORM to include the SDL2/SDL_opengles2_gl2platform.h header
     You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_KHRPLATFORM to include the SDL2/SDL_opengles2_khrplatform.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_OPENGL_GLEXT to include the SDL2/SDL_opengl_glext.h header
 
 === FEATURES ===
 
@@ -159,9 +160,6 @@ FLAGS
 #include <SDL2/SDL_metal.h>
 #include <SDL2/SDL_mutex.h>
 #include <SDL2/SDL_name.h>
-
-// SDL2 opengl
-
 #include <SDL2/SDL_pixels.h>
 #include <SDL2/SDL_platform.h>
 #include <SDL2/SDL_power.h>
@@ -216,6 +214,10 @@ FLAGS
 #ifdef HC_FLAGS_SDL2_INCLUDE_OPENGLES2_KHRPLATFORM
 #include <SDL2/SDL_opengles2_khrplatform.h>
 #endif // HC_FLAGS_SDL2_INCLUDE_OPENGLES2_KHRPLATFORM
+
+#ifdef HC_FLAGS_SDL2_INCLUDE_OPENGL_GLEXT
+#include <SDL2/SDL_opengl_glext.h>
+#endif // HC_FLAGS_SDL2_INCLUDE_OPENGL_GLEXT
 
 #ifdef HC_FLAGS_SDL2_INCLUDE_VULKAN
 #include <SDL2/SDL_vulkan.h>
