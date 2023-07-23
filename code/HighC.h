@@ -34,10 +34,11 @@ You can define HC_FLAGS_INCLUDE_STDBOOL to include the stdbool.h header, allowin
 You can define HC_FLAGS_SDL2_INCLUDES to get access to all SDL2 headers, provided they are as SDL2/SDL_ etc.
 
 The following flags determine which renderer to use for SDL2. Only define one of the following
-You can define HC_FLAGS_SDL2_INCLUDE_VULKAN to include the SDL2/SDL_vulkan.h header
-You can define HC_FLAGS_SDL2_INCLUDE_OPENGL to include the SDL2/SDL_opengl.h header
-You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES to include the SDL2/SDL_opengles.h header
-You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2 to include the SDL2/SDL_opengles2.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_VULKAN to include the SDL2/SDL_vulkan.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_OPENGL to include the SDL2/SDL_opengl.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES to include the SDL2/SDL_opengles.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2 to include the SDL2/SDL_opengles2.h header
+    You can define HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2 to include the SDL2/SDL_opengles2_gl2.h header
 
 === FEATURES ===
 
@@ -165,6 +166,10 @@ Broken patch: HC_PATCH_BROKEN : Unlocks HC_ReadFileContents_RB
 #ifdef HC_FLAGS_SDL2_INCLUDE_OPENGLES2
 #include <SDL2/SDL_opengles2.h>
 #endif // HC_FLAGS_SDL2_INCLUDE_OPENGLES2
+
+#ifdef HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2
+#include <SDL2/SDL_opengles2_gl2.h>
+#endif // HC_FLAGS_SDL2_INCLUDE_OPENGLES2_GL2
 
 #ifdef HC_FLAGS_SDL2_INCLUDE_VULKAN
 #include <SDL2/SDL_vulkan.h>
