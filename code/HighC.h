@@ -55,6 +55,7 @@ To enable the SDL2 renderer headers, define HC_FLAGS_SDL2_USE_SDL2_RENDERER
 - Check if a file exists
 - Move a file
 - Copy a file
+- Rename a file
 - Merge strings
 - Merge 3 strings
 - Convert int to char
@@ -338,6 +339,20 @@ void HC_CreateFile(const char* filename)
     }
 
     fclose(file);
+}
+
+// HC_RenameFile
+
+int HC_RenameFile(const char* oldName, const char* newName)
+{
+    if (rename(oldname, newname) == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 // HC_IntToChar
