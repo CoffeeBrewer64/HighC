@@ -345,7 +345,7 @@ void HC_CreateFile(const char* filename)
 
 int HC_RenameFile(const char* oldName, const char* newName)
 {
-    if (rename(oldname, newname) == 0)
+    if (rename(oldName, newName) == 0)
     {
         return 1;
     }
